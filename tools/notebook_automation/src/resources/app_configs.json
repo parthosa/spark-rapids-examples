@@ -1,0 +1,32 @@
+{
+    "cluster": {
+        "default_config": {
+            "num_workers": 0,
+            "spark_version": "13.3.x-scala2.12",
+            "spark_conf": {
+                "spark.master": "local[*, 4]",
+                "spark.databricks.cluster.profile": "singleNode"
+            },
+            "node_type_id": "m5d.xlarge",
+            "driver_node_type_id": "m5d.xlarge",
+            "ssh_public_keys": [],
+            "custom_tags": {
+                "ResourceClass": "SingleNode"
+            },
+            "spark_env_vars": {
+                "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+            },
+            "autotermination_minutes": 120,
+            "enable_elastic_disk": false,
+            "init_scripts": [],
+            "data_security_mode": "LEGACY_SINGLE_USER_STANDARD",
+            "runtime_engine": "STANDARD"
+        },
+        "creation_timeout_minutes": 20
+    },
+    "notebook": {
+        "default_timeout_minutes": 60,
+        "default_parameters": {},
+        "status_check_interval_seconds": 30
+    }
+}

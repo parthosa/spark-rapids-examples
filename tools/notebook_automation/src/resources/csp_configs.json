@@ -1,0 +1,16 @@
+{
+    "databricks": {
+        "aws_attributes": {
+            "first_on_demand": 1,
+            "availability": "SPOT_WITH_FALLBACK",
+            "zone_id": "auto",
+            "instance_profile_arn": null,
+            "spot_bid_price_percent": 100
+        },
+        "azure_attributes": {
+            "first_on_demand": 1,
+            "availability": "ON_DEMAND_AZURE",
+            "spot_bid_max_price": -1
+        }
+    }
+}

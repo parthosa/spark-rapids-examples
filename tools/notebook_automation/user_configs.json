@@ -1,0 +1,31 @@
+{
+    "databricks": {
+        "domain": "https://adb-1111111111111111.azuredatabricks.net",
+        "token": "dapi11111111111111111111"
+    },
+    "github": {
+        "repo_url": "https://github.com/NVIDIA/spark-rapids-examples",
+        "branch": "main",
+        "notebook_path": "tools/databricks/[RAPIDS Accelerator for Apache Spark] Qualification Tool Notebook Template.ipynb",
+        "use_raw_content": true
+    },
+    "workspace": {
+        "import_path": "/Workspace/path/to/user/home/",
+        "overwrite": true
+    },
+    "cluster": {
+        "default_config": {
+            "spark_version": "13.3.x-scala2.12",
+            "node_type_id": "Standard_E8ds_v4",
+            "driver_node_type_id": "Standard_E8ds_v4",
+            "//node_type_id": "m5d.xlarge",
+            "//driver_node_type_id": "m5d.xlarge"
+        },
+        "creation_timeout_minutes": 20
+    },
+    "notebook": {
+        "parameters": {
+            "Eventlog Path": "dbfs:/path/to/databricks-azure-cpu"
+        }
+    }
+}
