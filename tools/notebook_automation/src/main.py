@@ -1,3 +1,16 @@
+# Copyright (c) 2025, NVIDIA CORPORATION.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import json
 import logging
@@ -13,6 +26,7 @@ from core.config import ConfigLoader
 from core.notebook import NotebookOrchestrator
 from databricks.cluster import DatabricksClusterManager
 from databricks.runner import DatabricksNotebookRunner
+from databricks.workspace import DatabricksWorkspaceManager
 
 
 def main(user_config_path: str) -> None:
@@ -29,7 +43,8 @@ def main(user_config_path: str) -> None:
 
         
         # Initialize managers
-        orchestrator = NotebookOrchestrator(config, logger)
+        workspace_manager = DatabricksWorkspaceManager(config, logger)
+        orchestrator = NotebookOrchestrator(config, logger, workspace_manager)
         cluster_manager = DatabricksClusterManager(config, logger)
         notebook_runner = DatabricksNotebookRunner(config, logger)
         
@@ -64,7 +79,7 @@ def main(user_config_path: str) -> None:
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python -m databricks_automation <config.json>")
+        print("Usage: python main.py <path_to_user_config>")
         sys.exit(1)
     
     user_config_path = sys.argv[1]
