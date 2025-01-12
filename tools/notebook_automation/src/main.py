@@ -18,22 +18,18 @@ import os
 import sys
 from datetime import datetime
 
-# Modify sys.path to include the parent directory for local imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-print(sys.path)
-
 from core.config import ConfigLoader
 from core.notebook import NotebookOrchestrator
 from databricks.cluster import DatabricksClusterManager
 from databricks.runner import DatabricksNotebookRunner
 from databricks.workspace import DatabricksWorkspaceManager
 
-
 def main(user_config_path: str) -> None:
             
     logging.basicConfig(
         level='INFO',
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        format='{asctime} {levelname} {name}: {message}',
+        style='{',
     )
 
     logger = logging.getLogger('NotebookAutomation')

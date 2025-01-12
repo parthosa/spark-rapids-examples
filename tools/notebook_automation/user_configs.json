@@ -6,8 +6,7 @@
     "github": {
         "repo_url": "https://github.com/NVIDIA/spark-rapids-examples",
         "branch": "main",
-        "notebook_path": "tools/databricks/[RAPIDS Accelerator for Apache Spark] Qualification Tool Notebook Template.ipynb",
-        "use_raw_content": true
+        "notebook_path": "tools/databricks/[RAPIDS Accelerator for Apache Spark] Qualification Tool Notebook Template.ipynb"
     },
     "workspace": {
         "import_path": "/Workspace/path/to/user/home/",
@@ -16,16 +15,14 @@
     "cluster": {
         "default_config": {
             "spark_version": "13.3.x-scala2.12",
-            "node_type_id": "Standard_E8ds_v4",
-            "driver_node_type_id": "Standard_E8ds_v4",
-            "//node_type_id": "m5d.xlarge",
-            "//driver_node_type_id": "m5d.xlarge"
+            "node_type_id": "Standard_E8ds_v4"
         },
         "creation_timeout_minutes": 20
     },
     "notebook": {
         "parameters": {
-            "Eventlog Path": "dbfs:/path/to/databricks-azure-cpu"
+            "Tools Version": "24.12.0",
+            "Eventlog Path": "dbfs:/path/to/eventlog"
         }
     }
 }

@@ -28,5 +28,8 @@
         "default_timeout_minutes": 60,
         "default_parameters": {},
         "status_check_interval_seconds": 30
+    },
+    "github": {
+        "use_raw_content": true
     }
 }

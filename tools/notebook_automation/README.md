@@ -15,6 +15,5 @@ To run the notebooks, you need to configure the `user_configs.json` file (e.g. d
 Once the `user_configs.json` file is properly configured, you can run the automation script using the following command:
 
 ```bash
-python src/main.py /path/to/user_configs.json
+./run.sh /path/to/user_configs.json
 ```
-

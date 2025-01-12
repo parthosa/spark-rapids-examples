@@ -46,6 +46,8 @@ class ConfigLoader:
         cls.load_csp_config(app_configs)
         user_config = cls.load_config_internal(user_config_path)
         cls.update_config(app_configs, user_config)
+        app_configs['cluster']['default_config']['driver_node_type_id'] = \
+            app_configs['cluster']['default_config']['node_type_id']
         return app_configs
 
     @classmethod
@@ -56,4 +58,3 @@ class ConfigLoader:
                 cls.update_config(config[key], value)
             else:
                 config[key] = value
-        
