@@ -27,7 +27,7 @@ class DatabricksPlatform:
     headers: Dict[str, str] = field(default_factory=dict, init=False)
 
     def __post_init__(self):
-        self.api = DatabricksAPIEndpoints(self.config['databricks']['domain'])
+        self.api = DatabricksAPIEndpoints(self.config['databricks']['workspace_url'])
         self.headers = {
             'Authorization': f"Bearer {self.config['databricks']['token']}",
             'Content-Type': 'application/json'

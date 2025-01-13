@@ -21,12 +21,13 @@ fi
 
 USER_CONFIG_FILE="$1"
 
-DOMAIN="https://adb-2222222222222222.azuredatabricks.net"
-TOKEN="dapi22222222222222222222"
-IMPORT_PATH="/Workspace/new/path/to/user/home/"
-NODE_TYPE_ID="Standard_DS3_v2"
-TOOLS_VERSION="25.0.0"
-EVENTLOG_PATH="dbfs:/new/path/to/eventlog"
+WORKSPACE_URL="${WORKSPACE_URL:-https://adb-2222222222222222.azuredatabricks.net}"
+DATABRICKS_TOKEN="${DATABRICKS_TOKEN:-dapi22222222222222222222}"
+IMPORT_PATH="${IMPORT_PATH:-/Workspace/new/path/to/user/home/}"
+SPARK_VERSION="${SPARK_VERSION:-13.3.x-scala2.12}"
+NODE_TYPE_ID="${NODE_TYPE_ID:-Standard_DS3_v2}"
+TOOLS_VERSION="${TOOLS_VERSION:-24.12.0}"
+EVENTLOG_PATH="${EVENTLOG_PATH:-dbfs:/new/path/to/eventlog}"
 
 
 if [ ! -f "$USER_CONFIG_FILE" ]; then
@@ -42,16 +43,18 @@ fi
 temp_file=$(mktemp)
 
 jq \
-  --arg domain "$DOMAIN" \
-  --arg token "$TOKEN" \
+  --arg workspace_url "$WORKSPACE_URL" \
+  --arg token "$DATABRICKS_TOKEN" \
   --arg import_path "$IMPORT_PATH" \
+  --arg spark_version "$SPARK_VERSION" \
   --arg node_type_id "$NODE_TYPE_ID" \
   --arg tools_version "$TOOLS_VERSION" \
   --arg eventlog_path "$EVENTLOG_PATH" \
   '
-  .databricks.domain = $domain |
+  .databricks.workspace_url = $workspace_url |
   .databricks.token = $token |
   .workspace.import_path = $import_path |
+  .cluster.default_config.spark_version = $spark_version |
   .cluster.default_config.node_type_id = $node_type_id |
   .notebook.parameters["Tools Version"] = $tools_version |
   .notebook.parameters["Eventlog Path"] = $eventlog_path

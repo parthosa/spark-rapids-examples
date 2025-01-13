@@ -1,6 +1,6 @@
 {
     "databricks": {
-        "domain": "https://adb-1111111111111111.azuredatabricks.net",
+        "workspace_url": "https://adb-1111111111111111.azuredatabricks.net",
         "token": "dapi11111111111111111111"
     },
     "github": {
