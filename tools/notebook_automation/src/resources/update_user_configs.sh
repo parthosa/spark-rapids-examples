@@ -21,11 +21,19 @@ fi
 
 USER_CONFIG_FILE="$1"
 
+# Configs for 'databricks' 
 WORKSPACE_URL="${WORKSPACE_URL:-https://adb-2222222222222222.azuredatabricks.net}"
 DATABRICKS_TOKEN="${DATABRICKS_TOKEN:-dapi22222222222222222222}"
+# Configs for 'github'
+REPO_URL="${REPO_URL:-https://github.com/NVIDIA/spark-rapids-examples}"
+BRANCH="${BRANCH:-main}"
+NOTEBOOK_PATH="${NOTEBOOK_PATH:-tools/databricks/[RAPIDS Accelerator for Apache Spark] Qualification Tool Notebook Template.ipynb}"
+# Configs for 'workspace'
 IMPORT_PATH="${IMPORT_PATH:-/Workspace/new/path/to/user/home/}"
+# Configs for 'cluster'
 SPARK_VERSION="${SPARK_VERSION:-13.3.x-scala2.12}"
 NODE_TYPE_ID="${NODE_TYPE_ID:-Standard_DS3_v2}"
+# Configs for 'notebook parameters'
 TOOLS_VERSION="${TOOLS_VERSION:-24.12.0}"
 EVENTLOG_PATH="${EVENTLOG_PATH:-dbfs:/new/path/to/eventlog}"
 
@@ -45,6 +53,9 @@ temp_file=$(mktemp)
 jq \
   --arg workspace_url "$WORKSPACE_URL" \
   --arg token "$DATABRICKS_TOKEN" \
+  --arg repo_url "$REPO_URL" \
+  --arg branch "$BRANCH" \
+  --arg notebook_path "$NOTEBOOK_PATH" \
   --arg import_path "$IMPORT_PATH" \
   --arg spark_version "$SPARK_VERSION" \
   --arg node_type_id "$NODE_TYPE_ID" \
@@ -53,6 +64,9 @@ jq \
   '
   .databricks.workspace_url = $workspace_url |
   .databricks.token = $token |
+  .github.repo_url = $repo_url |
+  .github.branch = $branch |
+  .github.notebook_path = $notebook_path |
   .workspace.import_path = $import_path |
   .cluster.default_config.spark_version = $spark_version |
   .cluster.default_config.node_type_id = $node_type_id |

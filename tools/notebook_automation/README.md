@@ -24,11 +24,23 @@ Once the `user_configs.json` file is properly configured, you can run the automa
 To update user configs via the command line, you can use the `update_user_configs.sh` script. The script takes the path to the `user_configs.json` file as an argument. Example with supported environment variables:
 
 ```bash
+# Configs for 'databricks' 
 export WORKSPACE_URL="https://adb-2222222222222222.azuredatabricks.net"
 export DATABRICKS_TOKEN="dapi22222222222222222222"
+
+# Configs for 'github'
+export REPO_URL="https://github.com/NVIDIA/spark-rapids-examples"
+export BRANCH="main"
+export NOTEBOOK_PATH="path/to/notebook.ipynb"
+
+# Configs for 'workspace'
 export IMPORT_PATH="/Workspace/new/path/to/user/home/"
+
+# Configs for 'cluster'
 export SPARK_VERSION="13.3.x-scala2.12"
 export NODE_TYPE_ID="Standard_DS3_v2"
+
+# Configs for 'notebook parameters'
 export TOOLS_VERSION="24.12.0"
 export EVENTLOG_PATH="dbfs:/new/path/to/eventlog"
 
