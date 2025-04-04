@@ -1,0 +1,6 @@
+nbformat==5.10.4
+PyGithub==2.6.1
+PyYAML==6.0.2
+black==24.2.0
+isort==5.13.2
+ruff==0.3.0
